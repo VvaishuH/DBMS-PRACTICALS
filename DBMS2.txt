@@ -1,0 +1,82 @@
+Display employees whose name contains the letter 'e':
+
+SELECT *
+FROM employee
+WHERE e_name LIKE '%e%';
+
+Display different types of designation:
+sql
+
+SELECT DISTINCT Designation
+FROM employee;
+
+Display the name and salary of employees whose location is Mumbai (assuming 'location' is represented by Dept_no in this case):
+
+SELECT e_name, salary
+FROM employee
+WHERE Dept_no = (SELECT Dept_no FROM employee WHERE Designation = 'Mumbai')
+
+
+Display the name and department of employees working in the Manager or Marketing department:
+
+SELECT e_name, Designation
+FROM employee
+WHERE Designation IN ('Manager', 'Marketing');
+
+
+Display the department name whose employees are more than one:
+
+SELECT Dept_no
+FROM employee
+GROUP BY Dept_no
+HAVING COUNT(*) > 1;
+
+Rename the employee table as emp1:
+
+ALTER TABLE employee
+RENAME TO emp1;
+
+Add a new column city to the employee table:
+
+ALTER TABLE emp1
+ADD COLUMN city VARCHAR(50);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
