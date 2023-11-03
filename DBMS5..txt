@@ -1,0 +1,62 @@
+Create both tables with primary keys:
+sql
+Copy code
+-- Create the Borrower table
+CREATE TABLE Borrower (
+    RollNo INT PRIMARY KEY,
+    Name VARCHAR(50),
+    DateofIssue DATE,
+    NameofBook VARCHAR(100),
+    Status VARCHAR(10)
+);
+
+-- Create the Fine table
+CREATE TABLE Fine (
+    Roll_no INT PRIMARY KEY,
+    Date DATE,
+    Amt DECIMAL(10, 2)
+);
+
+-- Insert 10 records into the Borrower table
+INSERT INTO Borrower (RollNo, Name, DateofIssue, NameofBook, Status)
+VALUES
+    (1, 'John Doe', '2023-01-15', 'Book 1', 'Issued'),
+    (2, 'Jane Smith', '2023-02-20', 'Book 2', 'Issued'),
+    (3, 'Bob Johnson', '2023-03-10', 'Book 3', 'Returned'),
+    -- Insert 7 more records here...
+
+-- Insert 10 records into the Fine table
+INSERT INTO Fine (Roll_no, Date, Amt)
+VALUES
+    (1, '2023-04-01', 10.00),
+    (2, '2023-03-15', 5.00),
+    (3, '2023-04-20', 7.50),
+    -- Insert 7 more records here...
+
+Find the count of books with an "Issued" status:
+sql
+Copy code
+SELECT COUNT(*) AS Issued_Books_Count
+FROM Borrower
+WHERE Status = 'Issued';
+
+Display all records from both tables:
+sql
+Copy code
+-- Display all records from the Borrower table
+SELECT * FROM Borrower;
+
+-- Display all records from the Fine table
+SELECT * FROM Fine;
+
+Display RollNo values where the date of issue is the same:
+sql
+Copy code
+SELECT RollNo, DateofIssue
+FROM Borrower
+GROUP BY RollNo, DateofIssue
+HAVING COUNT(*) > 1;D
+
+
+
+
