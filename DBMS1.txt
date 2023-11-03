@@ -1,0 +1,100 @@
+Create the employee table:
+
+sql
+
+CREATE TABLE employee (
+    emp_id INT PRIMARY KEY,
+    e_name VARCHAR(50),
+    salary DECIMAL(10, 2),
+    Date_of_Joining DATE,
+    Dept_no INT,
+    Designation VARCHAR(50)
+);
+
+Insert 10 records into the employee table:
+sql
+
+INSERT INTO employee (emp_id, e_name, salary, Date_of_Joining, Dept_no, Designation)
+VALUES
+    (1, 'John Doe', 50000.00, '2023-01-15', 101, 'Manager'),
+    (2, 'Jane Smith', 45000.00, '2023-02-20', 102, 'Developer'),
+    (3, 'Bob Johnson', 55000.00, '2023-03-10', 103, 'Designer'),
+    (4, 'Alice Brown', 60000.00, '2023-04-05', 101, 'Manager'),
+    (5, 'Charlie Lee', 48000.00, '2023-05-12', 102, 'Developer'),
+    (6, 'Eve Adams', 52000.00, '2023-06-25', 103, 'Designer'),
+    (7, 'David Wilson', 51000.00, '2023-07-14', 101, 'Manager'),
+    (8, 'Grace Davis', 47000.00, '2023-08-30', 102, 'Developer'),
+    (9, 'Frank Martin', 58000.00, '2023-09-17', 103, 'Designer'),
+    (10, 'Helen Thomas', 54000.00, '2023-10-22', 101, 'Manager');
+
+
+Create a view emp_vl with emp_id, e_name, and Dept_no attributes:
+sql
+
+CREATE VIEW emp_vl AS
+SELECT emp_id, e_name, Dept_no
+FROM employee;
+
+To show all the views on the database, you can query the system catalog (may vary depending on your database system). For example, in PostgreSQL, you can use the following query:
+sql
+
+SELECT table_name
+FROM information_schema.views;
+
+To update the department of an employee through a view, you can do so using an UPDATE statement on the view. For example:
+sql
+
+UPDATE emp_vl
+SET Dept_no = 104
+WHERE emp_id = 1;
+
+
+To create a primary key on emp_id, you can use the following SQL statement:
+
+Copy code
+ALTER TABLE employee
+ADD PRIMARY KEY (emp_id);
+
+
+To show the indices on the employee table, you can use the following SQL query, which will vary depending on your database system:
+sql
+
+SHOW INDEXES FROM employee;
+
+
+To create a user-defined index on any column, you can use the CREATE INDEX statement. For example, if you want to create an index on the Designation column, you can use the following SQL statement:
+
+
+CREATE INDEX designation_index
+ON employee (Designation);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
